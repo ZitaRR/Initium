@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Initium.Core
+namespace Initium.UI
 {
-    public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class Card : Element
     {
         [SerializeField]
         private LeanTweenType easing;
@@ -18,8 +18,10 @@ namespace Initium.Core
         private Vector2 origin;
         private Vector2 target;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             group = GetComponentInParent<HorizontalLayoutGroup>();
             rect = GetComponent<RectTransform>();
         }
@@ -33,22 +35,23 @@ namespace Initium.Core
 
             origin = rect.anchoredPosition;
             target = new(origin.x, origin.y - offset);
-            Debug.Log(origin);
         }
 
         
 
-        public void OnPointerEnter(PointerEventData eventData)
+        public override void OnPointerEnter(PointerEventData eventData)
         {
+            base.OnPointerEnter(eventData);
+
             LeanTween.move(rect, target, duration).setEase(easing);
-            Debug.Log("Hovering card");
         }
 
-        public void OnPointerExit(PointerEventData eventData)
+        public override void OnPointerExit(PointerEventData eventData)
         {
+            base.OnPointerExit(eventData);
+
             LeanTween.cancel(rect);
             LeanTween.move(rect, origin, duration);
-            Debug.Log("Stopped hovering card");
         }
     }
 }
