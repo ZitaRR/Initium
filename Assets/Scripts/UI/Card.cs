@@ -18,10 +18,8 @@ namespace Initium.UI
         private Vector2 origin;
         private Vector2 target;
 
-        protected override void Awake()
+        protected void Awake()
         {
-            base.Awake();
-
             group = GetComponentInParent<HorizontalLayoutGroup>();
             rect = GetComponent<RectTransform>();
         }

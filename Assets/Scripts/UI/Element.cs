@@ -5,16 +5,7 @@ using UnityEngine.EventSystems;
 
 public class Element : MonoBehaviour, IHover
 {
-    public string Name
-    {
-        get => name;
-        set => name = value;
-    }
-
-    protected virtual void Awake()
-    {
-        Name = $"{GetType().Name}-{Guid.NewGuid()}";
-    }
+    public string Name { get => name; }
 
     public void Enable()
     {
