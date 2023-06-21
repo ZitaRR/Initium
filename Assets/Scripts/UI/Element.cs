@@ -1,11 +1,17 @@
 using Initium.UI;
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Element : MonoBehaviour, IHover
 {
     public string Name { get => name; }
+    public RectTransform Rect { get; private set; }
+    public LTDescr Ltd { get; protected set; }
+
+    protected virtual void Awake()
+    {
+        Rect = GetComponent<RectTransform>();
+    }
 
     public void Enable()
     {
