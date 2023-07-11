@@ -34,7 +34,7 @@ namespace Initium
         private Button fastButton;
 
         private DateTime dateTime;
-        private GamePace pace;
+        private GamePace pace = GamePace.Normal;
         private IFormatProvider format;
 
         private void Awake()
@@ -58,7 +58,7 @@ namespace Initium
             }
 
             DateTime previous = DateTime;
-            DateTime = DateTime.AddMinutes((int)pace);
+            DateTime = DateTime.AddSeconds((int)pace);
 
             TryAdvanceNewDay(previous);
             TryAdvanceNewYear(previous);

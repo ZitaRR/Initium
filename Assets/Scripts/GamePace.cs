@@ -3,7 +3,7 @@
     public enum GamePace
     {
         Pause = 0,
-        Normal = 5,
-        Fast = 15
+        Normal = 15,
+        Fast = 45
     }
 }
