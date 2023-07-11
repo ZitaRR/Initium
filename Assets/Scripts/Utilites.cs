@@ -4,14 +4,16 @@ namespace Initium
 {
     public static class Utilites
     {
-        public static string FormatDate(this DateTime date, IFormatProvider format)
+        public static string FormatDay(this DateTime date)
         {
-            return $"{date.DayOfWeek}, {date.ToString("d MMMM yyyy", format)}";
+            return $"{(int)(date - DateTime.MinValue).TotalDays + 1}";
         }
 
-        public static string FormatTime(this DateTime date, IFormatProvider format)
+        public static string FormatTime(this DateTime date, bool twelveHourclock = false)
         {
-            return date.ToString("HH:mm", format);
+            return twelveHourclock
+                ? date.ToString("hh:mm tt")
+                : date.ToString("HH:mm");
         }
     }
 }

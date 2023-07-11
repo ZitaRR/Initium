@@ -4,6 +4,7 @@
     {
         Pause = 0,
         Normal = 15,
-        Fast = 45
+        Fast = 30,
+        IAmSpeed = 45
     }
 }
